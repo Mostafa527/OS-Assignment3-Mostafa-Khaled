@@ -1,8 +1,8 @@
 # Assignment 3 - Complete Documentation
 
-**Student Name**: [Your Full Name]  
-**Student ID**: [Your ID]  
-**Date Submitted**: [Submission Date]
+**Student Name**: [Mostafa Khaled]  
+**Student ID**: [987654321]  
+**Date Submitted**: []
 
 ---
 
@@ -14,7 +14,7 @@
 > Set sharing to "Anyone with the link can view".
 > Test the link in incognito/private mode before submitting.
 
-**Video Link**: [Paste your personal Gmail Google Drive link here]
+**Video Link**: 
 
 **Video filename**: `[YourStudentID]_Assignment3_Synchronization.mp4`
 
@@ -31,20 +31,20 @@
 
 Document your development process with **minimum 3 entries** showing progression:
 
-### Entry 1 - [Date, Time]
+### Entry 1 - [April 30, 2026, 4:00 PM]
 **What I implemented**: 
-
+I began by comprehending the assignment specifications and examining the given code. I found common resources like executionLog, totalWaitingTime, contextSwitchCount, and completedProcessCount.
 **Challenges encountered**: 
-
+At first, it was challenging to pinpoint potential racial circumstances.
 **How I solved it**: 
-
+I reviewed Chapter 3 , 5 from Operating System Concepts and focused on critical sections.
 **Testing approach**: 
-
+I ran the program without synchronization and observed behavior.
 **Time spent**: 
-
+2 hours
 ---
 
-### Entry 2 - [Date, Time]
+### Entry 2 - [April 30, 2026, 6:00 PM]
 **What I implemented**: 
 
 **Challenges encountered**: 
@@ -103,10 +103,13 @@ Document your development process with **minimum 3 entries** showing progression
 - What shared resource is affected?
 - Why is concurrent access a problem?
 - What incorrect behavior could occur?
-
+  
 **Your Answer**:
+The first race condition occurs in the shared variable contextSwitchCount, where multiple threads increment the value concurrently using contextSwitchCount++. Since this operation is not atomic, threads may overwrite each other's updates, leading to incorrect counts.
 
-[Your answer here - 4-6 sentences with code examples]
+The second race condition occurs in executionLog, which is implemented using ArrayList. ArrayList is not thread-safe, so concurrent modifications can lead to inconsistent data or runtime exceptions.
+
+These race conditions can cause incorrect statistics and corrupted logs, affecting the correctness of the simulation.
 
 ---
 
