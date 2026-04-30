@@ -117,6 +117,11 @@ These race conditions can cause incorrect statistics and corrupted logs, affecti
 **Q**: Explain the difference between ReentrantLock and Semaphore. Where did you use each in your code and why?
 
 **Your Answer**:
+ReentrantLock is used to provide mutual exclusion, ensuring that only one thread can access a critical section at a time. In this assignment, it was used to protect shared variables such as counters and execution logs.
+
+Semaphore, on the other hand, is used to control access to a limited number of resources. In this assignment, a binary semaphore (1 permit) was used to simulate CPU access, ensuring that only one process executes at a time.
+
+Thus, locks were used for data protection, while semaphores were used for resource management.
 
 [Your answer here - explain your implementation choices]
 
@@ -126,25 +131,34 @@ These race conditions can cause incorrect statistics and corrupted logs, affecti
 **Q**: What is deadlock? Explain TWO prevention techniques and what you did to prevent deadlocks in your code.
 
 **Your Answer**:
+Deadlock is a situation where two or more threads are waiting indefinitely for resources held by each other.
 
-[Your answer here - reference try-finally blocks, lock ordering, etc.]
+One prevention technique is using try-finally blocks to ensure that locks are always released, even if an exception occurs. Another technique is avoiding nested locks and maintaining consistent locking order.
+
+In this assignment, try-finally was used to guarantee that locks and semaphores are released properly, preventing deadlocks.
+
 
 ---
 
 ### Question 4: Lock Granularity Design Decision 
 **Q**: For Task 1 (protecting the three counters), explain your lock design choice:
 - Did you use ONE lock for all three counters (coarse-grained) OR separate locks for each counter (fine-grained)?
-- Explain WHY you made this choice
-- What are the trade-offs between the two approaches?
+- Explain WHY yhoicee the trade-offs between the two approaches?
 - Given that the three counters are independent, which approach provides better concurrency and why?
 
 **Your Answer**:
+I used a single lock (coarse-grained locking) to protect all shared counters. This approach simplifies implementation and reduces the risk of deadlocks.
+
+The trade-off is reduced concurrency compared to fine-grained locking, where separate locks could allow multiple threads to update different counters simultaneously.
+
+However, given the simplicity of the assignment and the small number of shared variables, coarse-grained locking is more suitable and easier to maintain.
 
 [Your answer here - explain coarse-grained vs fine-grained locking, independence of counters, concurrency implications. Show understanding of when to use each approach. 5-8 sentences expected.]
-
+ou made this c
 ---
 
 ## Part 3: Synchronization Analysis (1 mark)
+- What ar
 
 ### Critical Section #1: Counter Variables
 
